@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+class Student {
+    public:
+        string name;
+        int rollNumber;
+        string PRN;
+
+        void enterDetails() {
+            cout << "Enter student name: ";
+            getline(cin, name);
+            cout << "Enter roll number: ";
+            cin >> rollNumber;
+            cin.ignore(); 
+            cout << "Enter PRN: ";
+            getline(cin, PRN);
+        }
+
+        void displayDetails() {
+            cout << "Student Details:" << endl;
+            cout << "Name: " << name << endl;
+            cout << "Roll Number: " << rollNumber << endl;
+            cout << "PRN: " << PRN << endl;
+        }
+};
+
+int main() {
+    Student s;
+    s.enterDetails();
+    s.displayDetails();
+
+    return 0;
+}
