@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+    string title;
+    string author;
+    int pages;
+
+public:
+    Book(string t, string a, int p) : title(t), author(a), pages(p) {}
+
+    
+    Book(const Book &other) {
+        title = other.title;
+        author = other.author;
+        pages = other.pages;
+    }
+
+    void display() {
+        cout << "Title: " << title << ", Author: " << author << ", Pages: " << pages << endl;
+    }
+};
+
+int main() {
+    Book book1("The C++ Programming Language", "Bjarne Stroustrup", 1368); 
+    Book book2 = book1;   
+
+    cout << "Book 1: ";
+    book1.display();
+
+    cout << "Book 2 (copy): ";
+    book2.display();
+
+    return 0;
+}
