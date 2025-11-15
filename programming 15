@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Person {
+public:
+    string name;
+    int age;
+
+    void getPersonDetails() {
+        cout << "Enter name: ";
+        cin >> name;
+        cout << "Enter age: ";
+        cin >> age;
+    }
+};
+class Student : public Person {
+public:
+    int rollNo;
+    string grade;
+
+    void getStudentDetails() {
+        getPersonDetails();
+        cout << "Enter roll number: ";
+        cin >> rollNo;
+        cout << "Enter grade: ";
+        cin >> grade;
+    }
+
+    void displayStudent() {
+        cout << "\nStudent Info:" << endl;
+        cout << "Name: " << name << ", Age: " << age << endl;
+        cout << "Roll No: " << rollNo << ", Grade: " << grade << endl;
+    }
+};
+
+int main() {
+    Student s;
+    s.getStudentDetails();
+    s.displayStudent();
+    return 0;
+}
