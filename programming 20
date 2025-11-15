@@ -1,0 +1,49 @@
+#include <iostream>
+#include <exception>
+using namespace std;
+
+class NegativeInputException : public exception {
+public:
+    const char* what() const noexcept override {
+        return "Error: Negative input for factorial is not allowed.";
+    }
+};
+
+class LargeInputException : public exception {
+public:
+    const char* what() const noexcept override {
+        return "Error: Input is too large for factorial calculation.";
+    }
+};
+
+int factorial(int n) {
+    if (n < 0)
+        throw NegativeInputException();
+    if (n > 20) 
+        throw LargeInputException();
+
+    int result = 1;
+    for (int i = 1; i <= n; ++i)
+        result *= i;
+    return result;
+}
+
+int main() {
+    int num;
+    cout << "Enter a number to calculate factorial: ";
+    cin >> num;
+
+    try {
+        cout << "Factorial: " << factorial(num) << endl;
+    }
+    catch (const NegativeInputException& e) {
+        cerr << e.what() << endl;
+    }
+    catch (const LargeInputException& e) {
+        cerr << e.what() << endl;
+    }
+    catch (...) {
+        cerr << "Unknown error occurred." << endl;
+    }
+    return 0;
+}
